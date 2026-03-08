@@ -1,23 +1,26 @@
 import type { ReactNode } from "react";
 
 import { AppSidebar } from "@/components/layout/app-sidebar";
+import { Topbar } from "@/components/layout/topbar";
 import type { NavItem } from "@/types";
 
 interface AppShellProps {
   title: string;
+  subtitle: string;
   navItems: NavItem[];
+  sectionLabel: string;
   children: ReactNode;
 }
 
-export function AppShell({ title, navItems, children }: AppShellProps) {
+export function AppShell({ title, subtitle, navItems, sectionLabel, children }: AppShellProps) {
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white px-6 py-4">
-        <h1 className="text-xl font-semibold text-slate-900">{title}</h1>
-      </header>
-      <div className="mx-auto flex w-full max-w-7xl gap-6 px-6 py-6">
-        <AppSidebar items={navItems} />
-        <main className="flex-1 rounded-xl border border-slate-200 bg-white p-6">{children}</main>
+    <div className="min-h-screen bg-hero-gradient">
+      <div className="mx-auto flex w-full max-w-[1300px] gap-5 p-4 md:p-6">
+        <AppSidebar items={navItems} sectionLabel={sectionLabel} />
+        <main className="min-w-0 flex-1">
+          <Topbar title={title} subtitle={subtitle} />
+          <div className="space-y-6">{children}</div>
+        </main>
       </div>
     </div>
   );
