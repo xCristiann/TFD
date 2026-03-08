@@ -3,9 +3,35 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-background text-foreground antialiased;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-line bg-panel/90 shadow-panel;
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent/90;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-line bg-white/5 px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-white/10;
+  }
+
+  .input-premium {
+    @apply w-full rounded-xl border border-line bg-[#0c1120] px-4 py-3 text-sm text-foreground placeholder:text-muted outline-none transition focus:border-accent;
+  }
+
+  .table-head {
+    @apply border-b border-line px-4 py-3 text-left text-xs uppercase tracking-wide text-muted;
+  }
+
+  .table-cell {
+    @apply border-b border-line/70 px-4 py-3 text-sm text-foreground;
+  }
 }
